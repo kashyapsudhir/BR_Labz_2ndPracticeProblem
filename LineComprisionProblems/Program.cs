@@ -1,5 +1,4 @@
-﻿using LineComparision;
-using System;
+﻿using System;
 namespace LineComparisionProblems
 {
     public class Program
@@ -7,6 +6,10 @@ namespace LineComparisionProblems
         static void Main(String[] args)
         {
             Console.WriteLine("Welcome to line calculator");
+
+
+
+            Console.WriteLine("Enter the points of First line");
 
             Console.WriteLine("Enter x1: ");
             int x1 = Convert.ToInt32(Console.ReadLine());
@@ -20,10 +23,12 @@ namespace LineComparisionProblems
             Console.WriteLine("Enter y2: ");
             int y2 = Convert.ToInt32(Console.ReadLine());
 
-            CalculateLength calculateLength = new CalculateLength(x1, y1, x2, y2);
-            double line1 = calculateLength.calculate();
 
-            Console.WriteLine(line1);
+            double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
+            Console.WriteLine(length);
+
+
+            Console.WriteLine("Enter the points of Second line");
 
             Console.WriteLine("Enter x3: ");
             int x3 = Convert.ToInt32(Console.ReadLine());
@@ -37,13 +42,17 @@ namespace LineComparisionProblems
             Console.WriteLine("Enter y4: ");
             int y4 = Convert.ToInt32(Console.ReadLine());
 
-            CalculateLength calculateLength1 = new CalculateLength(x3, y3, x4, y4);
-            double line2 = calculateLength1.calculate();
+            double length2 = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
+            Console.WriteLine(length2);
 
-            Console.WriteLine(line2);
+            if (length.CompareTo(length2) > 0)
+                Console.WriteLine("Line1 is greater than line1");
+            else if (length.CompareTo(length2) < 0)
+                Console.WriteLine("Line2 is greater than line1");
+            else
+                Console.WriteLine("Both lines are equal");
 
-            calculateLength1.equalCheck(line1, line2);
-            calculateLength1.lineCompare(line1, line2);
+
         }
     }
 }
